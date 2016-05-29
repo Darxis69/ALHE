@@ -57,7 +57,7 @@ arePointsIdentical <- function(point1, point2)
     {
       dish1 <- meal1[[dishNo]]
       dish2 <- meal2[[dishNo]]
-      if (!identical(dish1["MealName"], dish2["MealName"]))
+      if (!identical(dish1[1], dish2[1]))
       {
         return(FALSE)
       }
@@ -68,23 +68,28 @@ arePointsIdentical <- function(point1, point2)
 
 neighborHoodFunc <- function(point)
 {
-  mealsSize <- nrow(dishes)
+  dishesSize <- nrow(dishes)
   
-  neighborHoodSize <- mealsPerDay*(mealsSize-1)
+  neighborHoodSize <- dishesPerMeal*mealsPerDay*(dishesSize-1)
   neighborHoodInsertElementIndex <- 1
   neighborHood <- vector(mode = "list", length = neighborHoodSize)
   
   for (mealNo in 1:mealsPerDay)
   {
-    for (selectedMealIndex in 1:mealsSize)
+    meal = point[[mealNo]]
+    for (dishNo in 1:dishesPerMeal)
     {
-      selectedMeal <- dishes[selectedMealIndex, ]
-      if (!identical(selectedMeal["MealName"], point[[mealNo]]["MealName"]))
+      dish = meal[[dishNo]]
+      for (selectedDishIndex in 1:dishesSize)
       {
-        neighbor <- point
-        neighbor[[mealNo]] <- selectedMeal
-        neighborHood[[neighborHoodInsertElementIndex]] <- neighbor
-        neighborHoodInsertElementIndex <- neighborHoodInsertElementIndex + 1
+        selectedDish <- dishes[selectedDishIndex, ]
+        if (!identical(selectedDish[1], dish[1]))
+        {
+          neighbor <- point
+          neighbor[[mealNo]][[dishNo]] <- selectedDish
+          neighborHood[[neighborHoodInsertElementIndex]] <- neighbor
+          neighborHoodInsertElementIndex <- neighborHoodInsertElementIndex + 1
+        }
       }
     }
   }
