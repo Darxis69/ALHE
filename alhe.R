@@ -24,6 +24,8 @@ importMeals <- function()
 }
 
 meals <- importMeals()
+print(meals)
 
 result = tabuSearch(10, 0, stopConditionFunc, neighborHoodFunc, evaluateFunc)
+print(result)
 
