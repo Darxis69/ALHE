@@ -1,6 +1,6 @@
-importMeals <- function()
+importDishes <- function()
 {
-  meals <<- read.csv("meals.csv", header = TRUE)
+  dishes <<- read.csv("dishes.csv", header = TRUE)
 }
 
 sumMeal <- function(meal, selector)

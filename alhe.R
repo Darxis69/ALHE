@@ -4,7 +4,7 @@ source("MealsLogic.R")
 
 initialize_ALHE <- function()
 {
-  importMeals()
+  importDishes()
   dishesPerMeal <<- 3
   mealsPerDay <<- 5
   optimalCarbohydrates <<- 250
@@ -17,14 +17,14 @@ initialize_ALHE()
 generateRandomPoint <- function()
 {
   randomPoint <- vector(mode = "list", length = mealsPerDay)
-  mealsSize <- nrow(meals)
+  mealsSize <- nrow(dishes)
   for (mealNo in 1:mealsPerDay)
   {
     randomMeal <- vector(mode = "list", length = dishesPerMeal)
     for (dishNo in 1:dishesPerMeal)
     {
       randomDishIndex <- sample(1:mealsSize, 1)
-      randomDish <- meals[randomDishIndex, ]
+      randomDish <- dishes[randomDishIndex, ]
       randomMeal[[dishNo]] <- randomDish
     }
     randomPoint[[mealNo]] <- randomMeal
@@ -41,7 +41,7 @@ stopConditionFunc <- function(point)
 
 neighborHoodFunc <- function(point)
 {
-  mealsSize <- nrow(meals)
+  mealsSize <- nrow(dishes)
   
   neighborHoodSize <- mealsPerDay*(mealsSize-1)
   neighborHoodInsertElementIndex <- 1
@@ -51,7 +51,7 @@ neighborHoodFunc <- function(point)
   {
     for (selectedMealIndex in 1:mealsSize)
     {
-      selectedMeal <- meals[selectedMealIndex, ]
+      selectedMeal <- dishes[selectedMealIndex, ]
       if (!identical(selectedMeal["MealName"], point[[mealNo]]["MealName"]))
       {
         neighbor <- point
