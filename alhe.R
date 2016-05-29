@@ -2,14 +2,14 @@ source("TabuSearch.R")
 
 stopConditionFunc <- function(point)
 {
-  #TODO
-  return(point > 30)
+  #Przerywamy, jeżeli współczynnik dopasowania punktu osiągnie daną wartość
+  return(evaluateFunc(point) > 0.9)
 }
 
 neighborHoodFunc <- function(point)
 {
   #TODO
-  return(c(point-10, point-5, point+1, point+14, point+5))
+  return(c(point-0.01, point-0.05, point+0.01, point+0.014, point+0.05))
 }
 
 evaluateFunc <- function(point)
