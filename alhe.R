@@ -39,6 +39,33 @@ stopConditionFunc <- function(point)
   return(evaluateFunc(point) > 0.8)
 }
 
+arePointsIdentical <- function(point1, point2)
+{
+  if (length(point1) != length(point2))
+  {
+    return(FALSE)
+  }
+  for (mealNo in 1:length(point1))
+  {
+    meal1 <- point1[[mealNo]]
+    meal2 <- point2[[mealNo]]
+    if (length(meal1) != length(meal2))
+    {
+      return(FALSE)
+    }
+    for (dishNo in 1:length(meal1))
+    {
+      dish1 <- meal1[[dishNo]]
+      dish2 <- meal2[[dishNo]]
+      if (!identical(dish1["MealName"], dish2["MealName"]))
+      {
+        return(FALSE)
+      }
+    }
+  }
+  return(TRUE)
+}
+
 neighborHoodFunc <- function(point)
 {
   mealsSize <- nrow(dishes)
