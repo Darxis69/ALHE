@@ -1,6 +1,6 @@
 tabuSearch <- function(tabuSize, startingPoint, stopConditionFunc, neighborHoodFunc, evaluateFunc)
 {
-  tabu <- c()
+  tabu <- list()
   bestPoint <- startingPoint
   
   while (!stopConditionFunc(bestPoint))
@@ -31,7 +31,7 @@ tabuSearch <- function(tabuSize, startingPoint, stopConditionFunc, neighborHoodF
       bestPoint <- bestCandidate
     }
     
-    tabu <- append(tabu, bestCandidate)
+    tabu <- append(tabu, list(bestCandidate))
     if (length(tabu) > tabuSize)
     {
       tabu <- tabu[-1]
