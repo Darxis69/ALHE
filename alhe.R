@@ -8,6 +8,7 @@ importMeals <- function()
 initialize_ALHE <- function()
 {
   importMeals()
+  dishesPerMeal <<- 3
   mealsPerDay <<- 5
   optimalCarbohydrates <<- 250
   optimalProteins <<- 200
@@ -48,8 +49,13 @@ generateRandomPoint <- function()
   mealsSize <- nrow(meals)
   for (mealNo in 1:mealsPerDay)
   {
-    randomMealIndex <- sample(1:mealsSize, 1)
-    randomMeal <- meals[randomMealIndex, ]
+    randomMeal <- vector(mode = "list", length = dishesPerMeal)
+    for (dishNo in 1:dishesPerMeal)
+    {
+      randomDishIndex <- sample(1:mealsSize, 1)
+      randomDish <- meals[randomDishIndex, ]
+      randomMeal[[dishNo]] <- randomDish
+    }
     randomPoint[[mealNo]] <- randomMeal
   }
   
