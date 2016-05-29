@@ -1,6 +1,6 @@
-helloWorld <- function(message)
+importMeals <- function()
 {
-  print(paste("Hello ", message, sep = ""))
+  read.csv("meals.csv", header = TRUE)
 }
 
-helloWorld("DUPA")
+meals <- importMeals()
