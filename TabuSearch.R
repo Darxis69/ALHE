@@ -1,23 +1,6 @@
 library(hash)
 library(digest)
 
-listContainsElement <- function(l, element)
-{
-  listSize <- length(l)
-  if (listSize > 0)
-  {
-    for (i in 1:listSize)
-    {
-      if (identical(l[[i]], element))
-      {
-        return(TRUE)
-      }
-    }
-  }
-  
-  return(FALSE)
-}
-
 tabuSearch <- function(tabuSize, startingPoint, stopConditionFunc, neighborHoodFunc, evaluateFunc)
 {
   tabu <- hash()
