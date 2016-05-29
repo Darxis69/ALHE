@@ -7,13 +7,13 @@ tabuSearch <- function(tabuSize, startingPoint, stopConditionFunc, neighborHoodF
   {
     neighborHood <- neighborHoodFunc(bestPoint)
     bestCandidate <- NULL
-    bestCandidateEvaluate <- -1000000
+    bestCandidateEvaluate <- 0
     for (candidate in neighborHood)
     {
       if (!(candidate %in% tabu))
       {
         candidateEvaluate <- evaluateFunc(candidate)
-        if (candidateEvaluate > bestCandidateEvaluate)
+        if (is.null(bestCandidate) || candidateEvaluate > bestCandidateEvaluate)
         {
           bestCandidateEvaluate <- candidateEvaluate
           bestCandidate <- candidate
