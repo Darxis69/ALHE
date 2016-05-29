@@ -17,30 +17,41 @@ initialize_ALHE <- function()
 
 initialize_ALHE()
 
-sumBySelector <- function(point, selector, count)
+sumMeal <- function(meal, selector)
 {
   sum <- 0
-  for (i in 1:count)
+  for (i in 1:dishesPerMeal)
   {
-    sum <- sum + point[[i]][selector]
+    sum <- sum + meal[[i]][[selector]]
   }
   
   return(sum)
 }
 
-sumCarbohydrates <- function(point)
+sumDaily <- function(daily, selector)
 {
-  return(sumBySelector(point, "Carbohydrates", mealsPerDay))
+  sum <- 0
+  for (i in 1:mealsPerDay)
+  {
+    sum <- sum + sumMeal(daily[[i]], selector)
+  }
+  
+  return(sum)
 }
 
-sumProteins <- function(point)
+sumDailyCarbohydrates <- function(point)
 {
-  return(sumBySelector(point, "Proteins", mealsPerDay))
+  return(sumDaily(point, 2))
 }
 
-sumFats <- function(point)
+sumDailyProteins <- function(point)
 {
-  return(sumBySelector(point, "Fats", mealsPerDay))
+  return(sumDaily(point, 3))
+}
+
+sumDailyFats <- function(point)
+{
+  return(sumDaily(point, 4))
 }
 
 generateRandomPoint <- function()
@@ -99,9 +110,9 @@ neighborHood <- neighborHoodFunc(randomPoint)
 
 evaluateFunc <- function(point)
 {
-  deltaCarbohydrates <- abs(optimalCarbohydrates - sumCarbohydrates(point))
-  deltaProteins <- abs(optimalProteins - sumProteins(point))
-  deltaFats <- abs(optimalFats - sumFats(point))
+  deltaCarbohydrates <- abs(optimalCarbohydrates - sumDailyCarbohydrates(point))
+  deltaProteins <- abs(optimalProteins - sumDailyProteins(point))
+  deltaFats <- abs(optimalFats - sumDailyFats(point))
   deltaSum <- deltaCarbohydrates + deltaProteins + deltaFats
   
   if (deltaSum == 0)
@@ -113,6 +124,6 @@ evaluateFunc <- function(point)
 }
 
 result = tabuSearch(10, generateRandomPoint(), stopConditionFunc, neighborHoodFunc, evaluateFunc)
-print(paste("Carbohydrates wanted: ", optimalCarbohydrates, ". Got: ", sumCarbohydrates(result), sep = ''))
-print(paste("Proteins wanted: ", optimalProteins, ". Got: ", sumProteins(result), sep = ''))
-print(paste("Fats wanted: ", optimalFats, ". Got: ", sumFats(result), sep = ''))
+print(paste("Carbohydrates wanted: ", optimalCarbohydrates, ". Got: ", sumDailyCarbohydrates(result), sep = ''))
+print(paste("Proteins wanted: ", optimalProteins, ". Got: ", sumDailyProteins(result), sep = ''))
+print(paste("Fats wanted: ", optimalFats, ". Got: ", sumDailyFats(result), sep = ''))
