@@ -15,13 +15,13 @@ initialize_ALHE()
 
 generateRandomPoint <- function()
 {
-  randomPoint <- list()
+  randomPoint <- vector(mode = "list", length = mealsPerDay)
   mealsSize <- nrow(meals)
   for (mealNo in 1:mealsPerDay)
   {
     randomMealIndex <- sample(1:mealsSize, 1)
     randomMeal <- meals[randomMealIndex, ]
-    randomPoint <- append(randomPoint, list(randomMeal))
+    randomPoint[[mealNo]] <- randomMeal
   }
   
   return(randomPoint)
@@ -38,7 +38,7 @@ neighborHoodFunc <- function(point)
   mealsSize <- nrow(meals)
   
   neighborHoodSize <- mealsPerDay*(mealsSize-1)
-  neighborHoodElementsAdded <- 0
+  neighborHoodInsertElementIndex <- 1
   neighborHood <- vector(mode = "list", length = neighborHoodSize)
   
   for (mealNo in 1:mealsPerDay)
@@ -49,9 +49,9 @@ neighborHoodFunc <- function(point)
       if (!identical(selectedMeal["MealName"], point[[mealNo]]["MealName"]))
       {
         neighbor <- point
-        neighbor[mealNo] <- list(selectedMeal)
-        neighborHood[neighborHoodElementsAdded] <- neighbor
-        neighborHoodElementsAdded <- neighborHoodElementsAdded + 1
+        neighbor[[mealNo]] <- selectedMeal
+        neighborHood[[neighborHoodInsertElementIndex]] <- neighbor
+        neighborHoodInsertElementIndex <- neighborHoodInsertElementIndex + 1
       }
     }
   }
