@@ -1,3 +1,6 @@
+library(hash)
+library(digest)
+
 listContainsElement <- function(l, element)
 {
   listSize <- length(l)
@@ -17,7 +20,7 @@ listContainsElement <- function(l, element)
 
 tabuSearch <- function(tabuSize, startingPoint, stopConditionFunc, neighborHoodFunc, evaluateFunc)
 {
-  tabu <- list()
+  tabu <- hash()
   bestPoint <- startingPoint
   
   while (!stopConditionFunc(bestPoint))
@@ -27,7 +30,7 @@ tabuSearch <- function(tabuSize, startingPoint, stopConditionFunc, neighborHoodF
     bestCandidateEvaluate <- 0
     for (candidate in neighborHood)
     {
-      if (!(listContainsElement(tabu, candidate)))
+      if (!has.key(digest(candidate), tabu))
       {
         candidateEvaluate <- evaluateFunc(candidate)
         if (is.null(bestCandidate) || candidateEvaluate > bestCandidateEvaluate)
@@ -48,12 +51,12 @@ tabuSearch <- function(tabuSize, startingPoint, stopConditionFunc, neighborHoodF
       bestPoint <- bestCandidate
     }
     
-    tabu <- append(tabu, list(bestCandidate))
-    if (length(tabu) > tabuSize)
-    {
-      tabu <- tabu[-1]
-    }
+    .set(tabu, keys=list(digest(bestCandidate)), values=list(bestCandidate))
+    
+    ##TODO Remove tabu elements when tabuSize exceeded
+    ##For this, create a FIFO queue with hashes in order of inserting
   }
   
+  rm(tabu)
   return(bestPoint)
 }
