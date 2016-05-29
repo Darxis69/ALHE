@@ -1,5 +1,17 @@
 source("TabuSearch.R")
 
+importMeals <- function()
+{
+  meals <<- read.csv("meals.csv", header = TRUE)
+}
+
+initialize_ALHE <- function()
+{
+  importMeals()
+}
+
+initialize_ALHE()
+
 stopConditionFunc <- function(point)
 {
   #Przerywamy, jeżeli współczynnik dopasowania punktu osiągnie daną wartość
@@ -18,14 +30,5 @@ evaluateFunc <- function(point)
   return(point)
 }
 
-importMeals <- function()
-{
-  read.csv("meals.csv", header = TRUE)
-}
-
-meals <- importMeals()
-print(meals)
-
 result = tabuSearch(10, 0, stopConditionFunc, neighborHoodFunc, evaluateFunc)
 print(result)
-
