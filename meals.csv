@@ -1,3 +1,199 @@
 MealName,Carbohydrates,Proteins,Fat
-Rice,60,8,1
-ChickenBreast,20,20,10
+Extra Lean Ground Turkey,20.0,0.0,3.5
+Free Run Egg,11.3,1.9,9.4
+Liquid Egg Whites,11.1,0.0,0.0
+Flaked White Tuna in H20,26.7,0.0,1.7
+Cod,18.3,0.0,0.7
+Salmon (fresh),21.4,0.0,8.6
+Rainbow Trout,23.0,0.0,6.0
+Haddock,24.3,0.0,0.9
+Halibut,20.8,0.0,2.3
+Greek Yogourt,11.4,3.4,0.2
+Tilapia,18.8,0.0,0.9
+Cottage Cheese (Low Sodium),19.2,2.4,0.4
+Cottage Cheese (1% Milk Low Fat),12.4,2.7,1.1
+Chicken Breast,26.0,0.0,4.0
+Lamb,20.0,0.0,8.0
+Zipperback Tiger Shrimp,17.7,0.0,1.2
+Pork Loin Centre Chops Bnls,21.0,0.1,3.8
+Turkey Breast Deli Meat,20.7,1.7,0.9
+Top Sirloin,27.8,0.0,15.4
+Round Steak,36.1,0.0,4.9
+Flank Steak,24.6,0.0,10.6
+Lean Ground Beef,26.9,0.0,17.4
+Rib Eye Steak,28.8,0.0,9.1
+Isopure Zero Carb,82.0,0.0,1.6
+Genuine Heath Whey Protein Isolate (Natural Vanilla),80.6,5.8,0.6
+BIO X Power Whey Isolate,82.9,8.6,2.9
+BSN Syntha 6 (Choc Mint),50.0,31.0,13.2
+Myoplex,42.0,24.0,2.0
+RIVALUS Promasil Protein Powder,80.0,0.0,4.0
+Prograde Whey Protein Powder,76.2,6.3,3.2
+Kaizen 100% Whey Protein Isolate,87.5,2.5,0.8
+EAS 100% Whey Protein,76.7,6.7,6.7
+Pro-Nos Whey Protein,56.0,22.7,13.3
+NO Shotgun,95.0,0.0,0.0
+NO Synthesize,100.0,0.0,0.0
+CNP ProDessert,64.1,10.3,5.1
+ON Oats & Whey,46.2,42.3,2.9
+ON Gold Standard 100% Casein,75.0,9.4,3.1
+ON Platinum Hydrowhey Protein,76.9,5.1,2.6
+Marble Chedder Cheese,24.2,0.0,27.3
+Italiano Cheese,30.0,3.3,20.0
+Parmesan Cheese (100% grated),36.7,3.3,30.0
+Medium Light Chedder Cheese,27.7,0.0,20.0
+Kraft Philadelphia 95% fat free Cream Cheese,13.3,6.7,3.3
+Ricotta Cheese (Light),11.4,2.9,5.7
+Plain Yogourt,7.4,4.6,0.1
+Frozen Edamame,11.8,3.5,7.1
+Dextrose,0.0,100.0,0.0
+Potato Flour,8.8,79.4,1.5
+Whole Wheat Flour,12.9,71.0,1.0
+Brown Rice Cakes,5.4,86.5,0.0
+12 Grain Cereal,14.0,68.0,6.0
+Bran Flakes,10.0,80.0,1.7
+Oat Bran,16.7,66.7,8.3
+Quick Oats,12.5,67.5,6.3
+Whole Grain Steel Cut Oats,12.5,72.5,5.0
+Long Grain Brown Rice,6.1,77.6,3.1
+Whole Grain Bulgur,12.5,75.0,1.3
+Wheat Germ,25.0,50.0,9.4
+Mini Rice Cakes,11.1,77.8,4.4
+White Orzo,12.9,74.1,1.2
+Basmati White Rice,8.9,82.2,0.0
+Medium Grain Sticky Rice,7.4,79.6,1.9
+Barley,12.5,73.5,2.3
+Jasmine Rice,6.7,77.8,0.0
+Chick Peas,7.0,15.0,2.0
+Sweet Potato,1.5,25.4,0.0
+Whole Grain Quinoa,15.2,65.2,5.4
+Whole Wheat Pita Bread,12.0,58.0,1.0
+Black Beans,4.8,13.6,0.4
+White Kidney Beans,10.7,14.4,0.4
+Fava Beans,7.2,13.6,0.4
+Whole Grain Spaghetti,12.0,72.0,2.0
+Whole Grain Penne Rigate,12.0,72.0,2.0
+Whole Wheat Bows Pasta,14.1,72.9,1.8
+Whole Wheat Flax Tortilla,7.8,45.3,10.9
+Nature’s Path Hemp Plus Granola,10.9,65.5,18.2
+Manicotti Pasta,12.3,75.4,0.9
+Whole Wheat Bread,9.5,46.0,4.0
+Apple Sauce (Unsweetened),0.2,12.0,0.0
+Bread Crumbs (Gluten Free),10.0,83.3,0.0
+Clif Bar Oatmeal Raisen Walnut,14.7,63.2,7.4
+PowerBar Sport Energy Cookies & Cream,13.1,65.6,4.9
+Soy One Caramel Crunch,27.7,49.2,9.2
+Zone Perfect Energy Bar,26.7,48.9,11.1
+Broccoli (Fresh),2.8,6.6,0.3
+Cauliflower (Fresh),1.8,4.0,0.5
+Brussel Sprouts,2.6,7.1,0.5
+Mixed Greens,1.7,3.3,0.0
+Baby Spinach,1.4,2.8,0.0
+Kale,2.4,1.0,1.1
+Green Beans (Fresh),1.9,3.2,0.5
+snow peas,3.0,8.0,0.0
+Carrots,1.2,9.4,0.0
+Peas,5.0,12.5,0.0
+Mushroom,4.0,5.0,1.0
+Courgette,2.0,2.0,0.4
+Bok Choy,1.2,3.2,0.2
+Onion,1.1,9.3,0.1
+Red Peppers,1.0,6.0,0.3
+Peaches & Cream Corn,1.6,12.0,3.3
+Cucumber,0.6,3.7,0.2
+Lettuce,0.8,1.7,0.5
+Sun-Dried Tomatoes,14.3,50.0,0.0
+Celery,0.3,2.7,0.0
+Asparagus (Fresh),3.4,1.4,0.8
+Squash,1.2,3.4,0.2
+Green Onions,0.0,3.3,0.0
+Tomato,0.9,3.9,0.2
+Diced Tomatoes (canned),0.8,3.2,0.0
+Apple (red delicious),0.1,15.5,0.0
+Apple (granny smith),0.0,14.3,0.0
+Apple (liberty),0.0,14.3,0.0
+Pineapple,0.5,13.1,0.1
+Strawberries,0.7,7.7,0.3
+Peach,0.9,9.5,0.2
+Pears,0.3,9.1,0.1
+Lime,0.8,10.6,0.2
+Banana,1.1,22.9,0.3
+Grapes,0.7,17.2,0.3
+Grapefruit,0.6,8.1,0.1
+Frozen Strawberries,0.7,8.2,0.0
+Frozen Blueberries,0.7,12.9,0.4
+Lemon,0.4,8.7,0.0
+Mango Chunks,0.7,17.1,0.0
+Raspberries,1.0,12.0,1.0
+Orange,0.9,11.8,0.1
+Mini Manderin Orange,1.0,11.2,0.0
+Kiwi (with skin),1.0,9.0,0.0
+Pear,0.6,15.1,0.6
+Raisins,2.5,80.0,0.0
+Dried Apricots,2.5,55.0,0.0
+Clementine,0.0,8.0,0.0
+Sliced Ripe Olives,1.3,13.3,6.7
+Sesame Oil Blend,0.0,0.0,130.0
+Udo’s Oil 3 6 9 Blend,1.3,0.0,90.0
+Flax Oil,0.0,0.0,93.3
+Whole Ground Flaxseed Meal,23.1,30.8,34.6
+Chia Seeds,17.4,43.5,34.8
+100% Pure Peanut Oil,0.0,0.0,90.0
+Bragg Ginger & Sesame,0.0,6.7,40.0
+Avocado,2.0,8.5,14.7
+Coconut Oil,0.0,0.0,100.0
+Blue Cheese Crumbles,25.0,0.0,28.6
+Mozzarella Cheese,23.3,0.0,26.7
+Goat’s Milk Cheese,17.9,3.6,21.4
+Light Feta Cheese,13.3,0.0,16.7
+Sunflower oil,0.0,0.0,99.9
+Raw Almonds,20.0,20.0,52.5
+Pumpkin Raw,22.5,17.5,42.5
+Sunflower Seeds,22.5,20.0,50.0
+Chocolate Chips,7.0,60.0,30.0
+Cashew,17.7,18.1,48.2
+Pecans,9.2,13.9,71.9
+Walnut Pieces,15.0,12.5,65.0
+Olive Oil Spray,0.0,0.0,0.0
+Canola Oil Spray,0.0,0.0,100.0
+Extra Virgin Olive Oil,0.0,0.0,90.0
+Black Pepper,10.9,64.0,3.1
+Lemon Pepper (salt-free),0.0,0.0,0.0
+Paprika,14.3,57.1,14.3
+Parsley,3.0,6.3,0.8
+Black Pepper,10.9,64.1,3.1
+Garlic,6.7,33.3,0.0
+Basil,3.8,1.9,0.0
+Red Pepper Flakes,0.0,0.0,0.0
+Vanilla Extract,0.0,11.9,0.0
+Stevia,0.0,0.0,0.0
+Ground Nutmeg,0.0,0.0,0.0
+Ground Cinnamon,4.4,80.9,1.5
+Pure 100% Orange Juice,0.8,10.8,0.0
+100% Grape Juice,0.4,16.4,0.0
+Coconut Milk (Carton),0.4,2.9,2.1
+1% Milk,3.6,4.8,1.0
+Jasmine Green Tea,0.0,0.0,0.0
+Peppermint Tea (no caffeine),0.0,0.0,0.0
+Almond Milk (Unsweetened),0.4,0.8,1.3
+100% Pure Cranberry Juice (Not From Concentrate),0.0,7.4,0.0
+Water,0.0,0.0,0.0
+Mango Salsa,0.7,13.3,0.0
+Rice Vinegar,0.0,6.7,0.0
+Apple Cider Vinegar,0.0,3.3,0.0
+Balsamic Vinegar,0.0,13.3,0.0
+Strawberry Fruit Spread,0.7,53.3,0.0
+Hoisin Sauce,1.1,44.4,0.0
+Teriyaki Stir Fry Sauce,0.2,17.0,0.0
+Vegetable Broth,0.7,1.3,0.0
+Chicken Broth Reduced Sodium,0.8,0.4,0.0
+Honey,0.0,85.0,0.0
+Soy Sauce,10.0,10.0,0.0
+Sun-dried Tomato and Oregano Dressing,1.3,13.3,33.3
+Dijon Mustard,0.0,0.0,10.0
+Peanut Butter (Natural),26.7,20.0,53.3
+Sour Cream (Light),3.3,6.7,5.0
+Hummus,4.7,20.0,8.7
+Natural Raw Almond Butter,20.0,20.0,53.3
+Baking Powder,0.0,0.0,0.0
+Light Butter,1.0,0.0,60.0
