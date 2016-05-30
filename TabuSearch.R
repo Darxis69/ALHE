@@ -43,6 +43,10 @@ tabuSearch <- function(tabuSize, startingPoint, stopConditionFunc, neighborHoodF
       break
     }
     
+    #TODO Is the following 'if' required?
+    #'Różnica między metodą tabu a zwykłym algorytmem wspinaczki
+    # polega na tym, że zezwalamy na odwiedzanie sąsiadów o jakości
+    # gorszej od aktualnie rozpatrywanej'
     if (bestCandidateEvaluate > bestPointEvaluate)
     {
       bestPoint <- bestCandidate
@@ -51,7 +55,7 @@ tabuSearch <- function(tabuSize, startingPoint, stopConditionFunc, neighborHoodF
     
     .set(tabu, keys=digest(bestCandidate), values=0)
     
-    ##TODO Remove tabu elements when tabuSize exceeded
+    ##TODO Remove tabu elements when tabuSize exceeded?
     ##For this, create a FIFO queue with hashes in order of inserting
   }
   
