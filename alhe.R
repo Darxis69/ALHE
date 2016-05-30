@@ -10,6 +10,9 @@ initialize_ALHE <- function()
   optimalCarbohydrates <<- 250
   optimalProteins <<- 200
   optimalFats <<- 80
+  carbohydratesPriority <<- 1
+  proteinsPriority <<- 2
+  fatsPriority <<- 3
 }
 
 initialize_ALHE()
@@ -102,18 +105,22 @@ neighborHood <- neighborHoodFunc(randomPoint)
 
 evaluateFunc <- function(point)
 {
+  prioritiesSum <- carbohydratesPriority + proteinsPriority + fatsPriority
   xCarbohydrates <- sumDailyCarbohydrates(point) / optimalCarbohydrates
   if (xCarbohydrates > 1) xCarbohydrates <- 1/xCarbohydrates
+  xCarbohydrates <- xCarbohydrates * (carbohydratesPriority / prioritiesSum)
   
   xProteins <- sumDailyProteins(point) / optimalProteins
   if (xProteins > 1) xProteins <- 1/xProteins
+  xProteins <- xProteins * (proteinsPriority / prioritiesSum)
   
   xFats <- sumDailyFats(point) / optimalFats
   if (xFats > 1) xFats <- 1/xFats
+  xFats <- xFats * (fatsPriority / prioritiesSum)
   
-  xAverage = (xCarbohydrates + xProteins + xFats) / 3
+  xSum = xCarbohydrates + xProteins + xFats
   
-  return(xAverage)
+  return(xSum)
 }
 
 result = tabuSearch(10, generateRandomPoint(), stopConditionFunc, neighborHoodFunc, evaluateFunc)
