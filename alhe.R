@@ -164,7 +164,23 @@ objectiveFunc <- function(point)
 
 heuristicFunc <- function(point)
 {
-  return(1)
+  #Obliczamy stosunek uzyskanej do optymalnej
+  xCarbohydrates <- sumDailyCarbohydrates(point) / optimalCarbohydrates
+  
+  #Jeżeli większe od 1 to normalizujemy (np. 1.2 przechodzi w 0.8)
+  if (xCarbohydrates > 1) xCarbohydrates <- 1 - (xCarbohydrates - 1)
+  
+  #Powtarzamy dla pozostałych makroskładników
+  xProteins <- sumDailyProteins(point) / optimalProteins
+  if (xProteins > 1) xProteins <- 1 - (xProteins - 1)
+  
+  xFats <- sumDailyFats(point) / optimalFats
+  if (xFats > 1) xFats <- 1 - (xFats - 1)
+  
+  #Liczymy średnią
+  xSum = (xCarbohydrates+xProteins+xFats)/3
+  
+  return(xSum)
 }
 
 evaluateFunc <- function(point)
