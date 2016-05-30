@@ -36,7 +36,7 @@ generateRandomPoint <- function()
 stopConditionFunc <- function(point)
 {
   #Przerywamy, jeżeli współczynnik dopasowania punktu osiągnie daną wartość
-  return(evaluateFunc(point) > 0.8)
+  return(evaluateFunc(point) > 0.995)
 }
 
 arePointsIdentical <- function(point1, point2)
@@ -102,17 +102,18 @@ neighborHood <- neighborHoodFunc(randomPoint)
 
 evaluateFunc <- function(point)
 {
-  deltaCarbohydrates <- abs(optimalCarbohydrates - sumDailyCarbohydrates(point))
-  deltaProteins <- abs(optimalProteins - sumDailyProteins(point))
-  deltaFats <- abs(optimalFats - sumDailyFats(point))
-  deltaSum <- deltaCarbohydrates + deltaProteins + deltaFats
+  xCarbohydrates <- sumDailyCarbohydrates(point) / optimalCarbohydrates
+  if (xCarbohydrates > 1) xCarbohydrates <- 1/xCarbohydrates
   
-  if (deltaSum == 0)
-  {
-    return(1)
-  }
+  xProteins <- sumDailyProteins(point) / optimalProteins
+  if (xProteins > 1) xProteins <- 1/xProteins
   
-  return(1/((deltaCarbohydrates + deltaProteins + deltaFats)/100))
+  xFats <- sumDailyFats(point) / optimalFats
+  if (xFats > 1) xFats <- 1/xFats
+  
+  xAverage = (xCarbohydrates + xProteins + xFats) / 3
+  
+  return(xAverage)
 }
 
 result = tabuSearch(10, generateRandomPoint(), stopConditionFunc, neighborHoodFunc, evaluateFunc)
