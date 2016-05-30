@@ -113,6 +113,8 @@ evaluateFunc <- function(point)
   
   #Jeżeli większe od 1 to normalizujemy (np. 1.2 przechodzi w 0.8)
   if (xCarbohydrates > 1) xCarbohydrates <- 1 - (xCarbohydrates - 1)
+  #Jeżeli mniejsze to zmniejszamy dodatkowo tą wagę, bo nie chcemy mieć mniej niż jest w diecie
+  else xCarbohydrates <- xCarbohydrates * xCarbohydrates
   
   #Mnożymy razy wagę
   xCarbohydrates <- xCarbohydrates * (carbohydratesPriority / prioritiesSum)
@@ -120,10 +122,12 @@ evaluateFunc <- function(point)
   #Powtarzamy dla pozostałych makroskładników
   xProteins <- sumDailyProteins(point) / optimalProteins
   if (xProteins > 1) xProteins <- 1 - (xProteins - 1)
+  else xProteins <- xProteins * xProteins
   xProteins <- xProteins * (proteinsPriority / prioritiesSum)
   
   xFats <- sumDailyFats(point) / optimalFats
   if (xFats > 1) xFats <- 1 - (xFats - 1)
+  else xFats <- xFats * xFats
   xFats <- xFats * (fatsPriority / prioritiesSum)
   
   #Sumujemy całość
