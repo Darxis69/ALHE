@@ -132,7 +132,7 @@ monotonyRatio <- function(point)
   return(occurNo)
 }
 
-evaluateFunc <- function(point)
+objectiveFunc <- function(point)
 {
   #Sumujemy priorytety (wagi)
   prioritiesSum <- carbohydratesPriority + proteinsPriority + fatsPriority
@@ -163,6 +163,16 @@ evaluateFunc <- function(point)
   xSum = xCarbohydrates + xProteins + xFats
   
   return(xSum)
+}
+
+heuristicFunc <- function(point)
+{
+  
+}
+
+evaluateFunc <- function(point)
+{
+  return(objectiveFunc(point))
 }
 
 result = tabuSearch(10, generateRandomPoint(), stopConditionFunc, neighborHoodFunc, evaluateFunc)
