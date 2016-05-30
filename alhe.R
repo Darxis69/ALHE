@@ -140,3 +140,4 @@ result = tabuSearch(10, generateRandomPoint(), stopConditionFunc, neighborHoodFu
 print(paste("Carbohydrates wanted: ", optimalCarbohydrates, ". Got: ", sumDailyCarbohydrates(result), sep = ''))
 print(paste("Proteins wanted: ", optimalProteins, ". Got: ", sumDailyProteins(result), sep = ''))
 print(paste("Fats wanted: ", optimalFats, ". Got: ", sumDailyFats(result), sep = ''))
+print(result)
