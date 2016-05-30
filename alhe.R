@@ -105,19 +105,28 @@ neighborHood <- neighborHoodFunc(randomPoint)
 
 evaluateFunc <- function(point)
 {
+  #Sumujemy priorytety (wagi)
   prioritiesSum <- carbohydratesPriority + proteinsPriority + fatsPriority
+  
+  #Obliczamy stosunek optymalnej do uzyskanej
   xCarbohydrates <- sumDailyCarbohydrates(point) / optimalCarbohydrates
-  if (xCarbohydrates > 1) xCarbohydrates <- 1/xCarbohydrates
+  
+  #Jeżeli większe od 1 to normalizujemy (np. 1.2 przechodzi w 0.8)
+  if (xCarbohydrates > 1) xCarbohydrates <- 1 - (xCarbohydrates - 1)
+  
+  #Mnożymy razy wagę
   xCarbohydrates <- xCarbohydrates * (carbohydratesPriority / prioritiesSum)
   
+  #Powtarzamy dla pozostałych makroskładników
   xProteins <- sumDailyProteins(point) / optimalProteins
-  if (xProteins > 1) xProteins <- 1/xProteins
+  if (xProteins > 1) xProteins <- 1 - (xProteins - 1)
   xProteins <- xProteins * (proteinsPriority / prioritiesSum)
   
   xFats <- sumDailyFats(point) / optimalFats
-  if (xFats > 1) xFats <- 1/xFats
+  if (xFats > 1) xFats <- 1 - (xFats - 1)
   xFats <- xFats * (fatsPriority / prioritiesSum)
   
+  #Sumujemy całość
   xSum = xCarbohydrates + xProteins + xFats
   
   return(xSum)
