@@ -103,6 +103,35 @@ neighborHoodFunc <- function(point)
 randomPoint <- generateRandomPoint()
 neighborHood <- neighborHoodFunc(randomPoint)
 
+monotonyRatio <- function(point)
+{
+  dishesList <- list()
+  index <- 1
+  for (mealNo in 1:length(point))
+  {
+    meal <- point[[mealNo]]
+    for (dishNo in 1:length(meal))
+    {
+      dish <- meal[[dishNo]]
+      dishesList[[index]] <- dish[[1]]
+      index <- index + 1
+    }
+  }
+  
+  duplicates <- duplicated(dishesList)
+  occurNo <- 0
+  
+  for (i in 1:length(duplicates))
+  {
+    if (duplicates[[i]] == TRUE)
+    {
+      occurNo <- occurNo + 1
+    }
+  }
+  
+  return(occurNo)
+}
+
 evaluateFunc <- function(point)
 {
   #Sumujemy priorytety (wagi)
