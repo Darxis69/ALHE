@@ -13,6 +13,8 @@ initialize_ALHE <- function()
   carbohydratesPriority <<- 1
   proteinsPriority <<- 2
   fatsPriority <<- 3
+  objectiveFuncPriority <<- 1
+  heuristicFuncPriority <<- 1
 }
 
 initialize_ALHE()
@@ -145,34 +147,34 @@ objectiveFunc <- function(point)
   #Jeżeli mniejsze to zmniejszamy dodatkowo tą wagę, bo nie chcemy mieć mniej niż jest w diecie
   else xCarbohydrates <- xCarbohydrates * xCarbohydrates
   
-  #Mnożymy razy wagę
-  xCarbohydrates <- xCarbohydrates * (carbohydratesPriority / prioritiesSum)
-  
   #Powtarzamy dla pozostałych makroskładników
   xProteins <- sumDailyProteins(point) / optimalProteins
   if (xProteins > 1) xProteins <- 1 - (xProteins - 1)
   else xProteins <- xProteins * xProteins
-  xProteins <- xProteins * (proteinsPriority / prioritiesSum)
   
   xFats <- sumDailyFats(point) / optimalFats
   if (xFats > 1) xFats <- 1 - (xFats - 1)
   else xFats <- xFats * xFats
-  xFats <- xFats * (fatsPriority / prioritiesSum)
   
-  #Sumujemy całość
-  xSum = xCarbohydrates + xProteins + xFats
+  #Liczymy średnia ważoną
+  xSum = ((xCarbohydrates*carbohydratesPriority)+(xProteins * proteinsPriority)+(xFats * fatsPriority))/prioritiesSum
   
   return(xSum)
 }
 
 heuristicFunc <- function(point)
 {
-  
+  return(1)
 }
 
 evaluateFunc <- function(point)
 {
-  return(objectiveFunc(point))
+  objectiveFuncValue <- objectiveFunc(point)
+  heuristicFuncValue <- heuristicFunc(point)
+  
+  prioritiesSum <- objectiveFuncPriority + heuristicFuncPriority
+  
+  return((objectiveFuncValue*objectiveFuncPriority+heuristicFuncValue*heuristicFuncPriority)/prioritiesSum)
 }
 
 result = tabuSearch(10, generateRandomPoint(), stopConditionFunc, neighborHoodFunc, evaluateFunc)
