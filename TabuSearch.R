@@ -6,6 +6,7 @@ tabuSearch <- function(tabuSize, startingPoint, stopConditionFunc, neighborHoodF
   tabu <- hash()
   evaluateValues <- hash()
   bestPoint <- startingPoint
+  bestPointEvaluate <- evaluateFunc(bestPoint)
   
   while (!stopConditionFunc(bestPoint))
   {
@@ -13,7 +14,6 @@ tabuSearch <- function(tabuSize, startingPoint, stopConditionFunc, neighborHoodF
     bestCandidate <- NULL
     bestCandidateEvaluate <- 0
     bestCandidateChecksum <- NULL
-    print("BEGIN")
     for (candidate in neighborHood)
     {
       candidateChecksum = digest(candidate)
@@ -37,16 +37,16 @@ tabuSearch <- function(tabuSize, startingPoint, stopConditionFunc, neighborHoodF
         }
       }
     }
-    print("END")
     
     if (is.null(bestCandidate))
     {
       break
     }
     
-    if (bestCandidateEvaluate > evaluateFunc(bestPoint))
+    if (bestCandidateEvaluate > bestPointEvaluate)
     {
       bestPoint <- bestCandidate
+      bestPointEvaluate <- bestCandidateEvaluate
     }
     
     .set(tabu, keys=digest(bestCandidate), values=0)
