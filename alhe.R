@@ -108,7 +108,7 @@ evaluateFunc <- function(point)
   #Sumujemy priorytety (wagi)
   prioritiesSum <- carbohydratesPriority + proteinsPriority + fatsPriority
   
-  #Obliczamy stosunek optymalnej do uzyskanej
+  #Obliczamy stosunek uzyskanej do optymalnej
   xCarbohydrates <- sumDailyCarbohydrates(point) / optimalCarbohydrates
   
   #Jeżeli większe od 1 to normalizujemy (np. 1.2 przechodzi w 0.8)
