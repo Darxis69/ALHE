@@ -4,6 +4,7 @@ library(digest)
 tabuSearch <- function(tabuSize, startingPoint, stopConditionFunc, neighborHoodFunc, evaluateFunc)
 {
   tabu <- hash()
+  evaluateValues <- hash()
   bestPoint <- startingPoint
   
   while (!stopConditionFunc(bestPoint))
@@ -11,18 +12,32 @@ tabuSearch <- function(tabuSize, startingPoint, stopConditionFunc, neighborHoodF
     neighborHood <- neighborHoodFunc(bestPoint)
     bestCandidate <- NULL
     bestCandidateEvaluate <- 0
+    bestCandidateChecksum <- NULL
+    print("BEGIN")
     for (candidate in neighborHood)
     {
-      if (!has.key(digest(candidate), tabu))
+      candidateChecksum = digest(candidate)
+      if (!has.key(candidateChecksum, tabu))
       {
-        candidateEvaluate <- evaluateFunc(candidate)
+        if (has.key(candidateChecksum, evaluateValues))
+        {
+          candidateEvaluate <- evaluateValues[[candidateChecksum]]
+        }
+        else 
+        {
+          candidateEvaluate <- evaluateFunc(candidate)
+          .set(evaluateValues, keys=candidateChecksum, values=candidateEvaluate)
+        }
+        
         if (is.null(bestCandidate) || candidateEvaluate > bestCandidateEvaluate)
         {
           bestCandidateEvaluate <- candidateEvaluate
+          bestCandidateChecksum <- candidateChecksum
           bestCandidate <- candidate
         }
       }
     }
+    print("END")
     
     if (is.null(bestCandidate))
     {
@@ -34,7 +49,7 @@ tabuSearch <- function(tabuSize, startingPoint, stopConditionFunc, neighborHoodF
       bestPoint <- bestCandidate
     }
     
-    .set(tabu, keys=list(digest(bestCandidate)), values=list(bestCandidate))
+    .set(tabu, keys=digest(bestCandidate), values=0)
     
     ##TODO Remove tabu elements when tabuSize exceeded
     ##For this, create a FIFO queue with hashes in order of inserting
