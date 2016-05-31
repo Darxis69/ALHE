@@ -15,6 +15,7 @@ initialize_ALHE <- function()
   fatsPriority <<- 3
   objectiveFuncPriority <<- 1
   heuristicFuncPriority <<- 1
+  monotonyPriority <<- 1
 }
 
 initialize_ALHE()
@@ -155,11 +156,15 @@ objectiveFunc <- function(point)
   xFats <- sumDailyFats(point) / optimalFats
   if (xFats > 1) xFats <- 1 - (xFats - 1)
   else xFats <- xFats * xFats
+
+  dishesCount <- dishesPerMeal * mealsPerDay
+  xMonotonyRatio <- monotonyRatio(point) / dishesCount
+  xMonotonyRatio <- xMonotonyRatio * monotonyPriority
   
   #Liczymy średnia ważoną
   xSum = ((xCarbohydrates*carbohydratesPriority)+(xProteins * proteinsPriority)+(xFats * fatsPriority))/prioritiesSum
   
-  return(xSum)
+  return(xSum-xMonotonyRatio)
 }
 
 heuristicFunc <- function(point)
