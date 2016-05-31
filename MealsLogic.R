@@ -25,12 +25,12 @@ sumDaily <- function(daily, selector)
   return(sum)
 }
 
-sumDailyCarbohydrates <- function(point)
+sumDailyProteins <- function(point)
 {
   return(sumDaily(point, 2))
 }
 
-sumDailyProteins <- function(point)
+sumDailyCarbohydrates <- function(point)
 {
   return(sumDaily(point, 3))
 }
