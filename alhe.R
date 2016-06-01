@@ -4,18 +4,19 @@ source("MealsLogic.R")
 
 initialize_ALHE <- function()
 {
-  importDishes()
+  allDishesCount <<- 198
+  importDishes(allDishesCount)
   dishesPerMeal <<- 3
   mealsPerDay <<- 5
   optimalCarbohydrates <<- 250
   optimalProteins <<- 200
   optimalFats <<- 80
-  carbohydratesPriority <<- 1
-  proteinsPriority <<- 2
-  fatsPriority <<- 3
+  carbohydratesPriority <<- 3
+  proteinsPriority <<- 5
+  fatsPriority <<- 1
+  monotonyPriority <<- 1
   objectiveFuncPriority <<- 1
   heuristicFuncPriority <<- 1
-  monotonyPriority <<- 1
 }
 
 initialize_ALHE()
@@ -199,7 +200,7 @@ evaluateFunc <- function(point)
 }
 
 result = tabuSearch(10, generateRandomPoint(), stopConditionFunc, neighborHoodFunc, evaluateFunc)
-print(paste("Carbohydrates wanted: ", optimalCarbohydrates, ". Got: ", sumDailyCarbohydrates(result), sep = ''))
 print(paste("Proteins wanted: ", optimalProteins, ". Got: ", sumDailyProteins(result), sep = ''))
+print(paste("Carbohydrates wanted: ", optimalCarbohydrates, ". Got: ", sumDailyCarbohydrates(result), sep = ''))
 print(paste("Fats wanted: ", optimalFats, ". Got: ", sumDailyFats(result), sep = ''))
 print(result)

@@ -1,6 +1,6 @@
-importDishes <- function()
+importDishes <- function(allDishesCount)
 {
-  dishes <<- read.csv("dishes.csv", header = TRUE)
+  dishes <<- read.csv("dishes.csv", header = TRUE, nrows=allDishesCount)
 }
 
 sumMeal <- function(meal, selector)
