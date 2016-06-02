@@ -19,6 +19,7 @@ initialize_ALHE <- function()
   monotonyPriority <<- 1
   objectiveFuncPriority <<- 1
   heuristicFuncPriority <<- 1
+  stopCondition <<- 0.995
 }
 
 initialize_ALHE()
@@ -45,8 +46,7 @@ generateRandomPoint <- function()
 stopConditionFunc <- function(point)
 {
   #Przerywamy, jeżeli współczynnik dopasowania punktu osiągnie daną wartość
-  #TODO 0.955 extract config
-  return(evaluateFunc(point) > 0.995)
+  return(evaluateFunc(point) > stopCondition)
 }
 
 arePointsIdentical <- function(point1, point2)
