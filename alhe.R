@@ -1,25 +1,11 @@
 source("TabuSearch.R")
 source("MealsLogic.R")
+#source("ConfigVariables.R")
 
 
 initialize_ALHE <- function()
 {
-  #TODO source('config_vars.r')
-  #TODO with(conf, {cat(a)})
-  allDishesCount <<- 198
-  importDishes(allDishesCount)
-  dishesPerMeal <<- 3
-  mealsPerDay <<- 5
-  optimalCarbohydrates <<- 250
-  optimalProteins <<- 200
-  optimalFats <<- 80
-  carbohydratesPriority <<- 3
-  proteinsPriority <<- 5
-  fatsPriority <<- 1
-  monotonyPriority <<- 1
-  objectiveFuncPriority <<- 1
-  heuristicFuncPriority <<- 1
-  stopCondition <<- 0.995
+  importDishes(configVariables[['allDishesCount']])
 }
 
 initialize_ALHE()
@@ -214,3 +200,5 @@ print(paste("Carbohydrates wanted: ", optimalCarbohydrates, ". Got: ", sumDailyC
 print(paste("Fats wanted: ", optimalFats, ". Got: ", sumDailyFats(diet), sep = ''))
 print(paste("Observations: ", observations))
 print(diet)
+
+print(configVariables[['dishesPerMeal']])
