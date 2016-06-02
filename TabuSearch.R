@@ -50,12 +50,10 @@ tabuSearch <- function(startingPoint, stopConditionFunc, neighborHoodFunc, evalu
     # polega na tym, że zezwalamy na odwiedzanie sąsiadów o jakości
     # gorszej od aktualnie rozpatrywanej'
     
-    #Remove this if, and retest
-    if (bestCandidateEvaluate > bestPointEvaluate)
-    {
-      bestPoint <- bestCandidate
-      bestPointEvaluate <- bestCandidateEvaluate
-    }
+    #Retest
+    #if (bestCandidateEvaluate > bestPointEvaluate)
+    bestPoint <- bestCandidate
+    bestPointEvaluate <- bestCandidateEvaluate
     
     .set(tabu, keys=digest(bestCandidate), values=0)
   }
