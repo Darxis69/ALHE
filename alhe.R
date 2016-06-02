@@ -4,6 +4,8 @@ source("MealsLogic.R")
 
 initialize_ALHE <- function()
 {
+  #TODO source('config_vars.r')
+  #TODO with(conf, {cat(a)})
   allDishesCount <<- 198
   importDishes(allDishesCount)
   dishesPerMeal <<- 3
@@ -43,6 +45,7 @@ generateRandomPoint <- function()
 stopConditionFunc <- function(point)
 {
   #Przerywamy, jeżeli współczynnik dopasowania punktu osiągnie daną wartość
+  #TODO 0.955 extract config
   return(evaluateFunc(point) > 0.995)
 }
 
@@ -199,6 +202,9 @@ evaluateFunc <- function(point)
   return((objectiveFuncValue*objectiveFuncPriority+heuristicFuncValue*heuristicFuncPriority)/prioritiesSum)
 }
 
+
+#Wykresy pokazac zaleznosc ilosci potraw
+#wagi wszystkiego
 result = tabuSearch(10, generateRandomPoint(), stopConditionFunc, neighborHoodFunc, evaluateFunc)
 print(paste("Proteins wanted: ", optimalProteins, ". Got: ", sumDailyProteins(result), sep = ''))
 print(paste("Carbohydrates wanted: ", optimalCarbohydrates, ". Got: ", sumDailyCarbohydrates(result), sep = ''))

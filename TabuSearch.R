@@ -1,6 +1,8 @@
 library(hash)
 library(digest)
 
+#TODO WRite in documentation that tabuSize is unlimited
+#TODO remove tabuSize
 tabuSearch <- function(tabuSize, startingPoint, stopConditionFunc, neighborHoodFunc, evaluateFunc)
 {
   tabu <- hash()
@@ -16,6 +18,7 @@ tabuSearch <- function(tabuSize, startingPoint, stopConditionFunc, neighborHoodF
     bestCandidateChecksum <- NULL
     for (candidate in neighborHood)
     {
+      #TODO Profile this find waskie gardlo
       candidateChecksum = digest(candidate)
       if (!has.key(candidateChecksum, tabu))
       {
@@ -47,6 +50,8 @@ tabuSearch <- function(tabuSize, startingPoint, stopConditionFunc, neighborHoodF
     #'Różnica między metodą tabu a zwykłym algorytmem wspinaczki
     # polega na tym, że zezwalamy na odwiedzanie sąsiadów o jakości
     # gorszej od aktualnie rozpatrywanej'
+    
+    #Remove this if, and retest
     if (bestCandidateEvaluate > bestPointEvaluate)
     {
       bestPoint <- bestCandidate
@@ -54,10 +59,9 @@ tabuSearch <- function(tabuSize, startingPoint, stopConditionFunc, neighborHoodF
     }
     
     .set(tabu, keys=digest(bestCandidate), values=0)
-    
-    ##TODO Remove tabu elements when tabuSize exceeded?
-    ##For this, create a FIFO queue with hashes in order of inserting
   }
+  
+  #Print tabu size
   
   rm(tabu)
   return(bestPoint)
