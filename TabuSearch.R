@@ -8,6 +8,7 @@ tabuSearch <- function(startingPoint, stopConditionFunc, neighborHoodFunc, evalu
   evaluateValues <- hash()
   bestPoint <- startingPoint
   bestPointEvaluate <- evaluateFunc(bestPoint)
+  observationsCount <- 0
   
   while (!stopConditionFunc(bestPoint))
   {
@@ -55,11 +56,11 @@ tabuSearch <- function(startingPoint, stopConditionFunc, neighborHoodFunc, evalu
     bestPoint <- bestCandidate
     bestPointEvaluate <- bestCandidateEvaluate
     
+    observationsCount <- observationsCount + 1
+    
     .set(tabu, keys=digest(bestCandidate), values=0)
   }
   
-  #Print tabu size
-  
   rm(tabu)
-  return(bestPoint)
+  return(list(bestPoint, observationsCount))
 }
