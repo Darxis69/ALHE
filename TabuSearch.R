@@ -2,8 +2,7 @@ library(hash)
 library(digest)
 
 #TODO WRite in documentation that tabuSize is unlimited
-#TODO remove tabuSize
-tabuSearch <- function(tabuSize, startingPoint, stopConditionFunc, neighborHoodFunc, evaluateFunc)
+tabuSearch <- function(startingPoint, stopConditionFunc, neighborHoodFunc, evaluateFunc)
 {
   tabu <- hash()
   evaluateValues <- hash()

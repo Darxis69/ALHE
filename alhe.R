@@ -205,7 +205,7 @@ evaluateFunc <- function(point)
 
 #Wykresy pokazac zaleznosc ilosci potraw
 #wagi wszystkiego
-result = tabuSearch(10, generateRandomPoint(), stopConditionFunc, neighborHoodFunc, evaluateFunc)
+result = tabuSearch(generateRandomPoint(), stopConditionFunc, neighborHoodFunc, evaluateFunc)
 print(paste("Proteins wanted: ", optimalProteins, ". Got: ", sumDailyProteins(result), sep = ''))
 print(paste("Carbohydrates wanted: ", optimalCarbohydrates, ". Got: ", sumDailyCarbohydrates(result), sep = ''))
 print(paste("Fats wanted: ", optimalFats, ". Got: ", sumDailyFats(result), sep = ''))
