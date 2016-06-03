@@ -1,14 +1,7 @@
+library(foreach)
 source("TabuSearch.R")
 source("MealsLogic.R")
-#source("ConfigVariables.R")
-
-
-initialize_ALHE <- function()
-{
-  importDishes(configVariables[['allDishesCount']])
-}
-
-initialize_ALHE()
+source("ConfigVariables.R")
 
 generateRandomPoint <- function()
 {
@@ -33,33 +26,6 @@ stopConditionFunc <- function(point)
 {
   #Przerywamy, jeżeli współczynnik dopasowania punktu osiągnie daną wartość
   return(evaluateFunc(point) > stopCondition)
-}
-
-arePointsIdentical <- function(point1, point2)
-{
-  if (length(point1) != length(point2))
-  {
-    return(FALSE)
-  }
-  for (mealNo in 1:length(point1))
-  {
-    meal1 <- point1[[mealNo]]
-    meal2 <- point2[[mealNo]]
-    if (length(meal1) != length(meal2))
-    {
-      return(FALSE)
-    }
-    for (dishNo in 1:length(meal1))
-    {
-      dish1 <- meal1[[dishNo]]
-      dish2 <- meal2[[dishNo]]
-      if (!identical(dish1[1], dish2[1]))
-      {
-        return(FALSE)
-      }
-    }
-  }
-  return(TRUE)
 }
 
 neighborHoodFunc <- function(point)
@@ -92,9 +58,6 @@ neighborHoodFunc <- function(point)
   
   return(neighborHood)
 }
-
-randomPoint <- generateRandomPoint()
-neighborHood <- neighborHoodFunc(randomPoint)
 
 monotonyRatio <- function(point)
 {
@@ -146,7 +109,7 @@ objectiveFunc <- function(point)
   xFats <- sumDailyFats(point) / optimalFats
   if (xFats > 1) xFats <- 1 - (xFats - 1)
   else xFats <- xFats * xFats
-
+  
   dishesCount <- dishesPerMeal * mealsPerDay
   xMonotonyRatio <- monotonyRatio(point) / dishesCount
   xMonotonyRatio <- xMonotonyRatio * monotonyPriority
@@ -188,17 +151,40 @@ evaluateFunc <- function(point)
   return((objectiveFuncValue*objectiveFuncPriority+heuristicFuncValue*heuristicFuncPriority)/prioritiesSum)
 }
 
-
 #Wykresy pokazac zaleznosc ilosci potraw
 #wagi wszystkiego
-result = tabuSearch(generateRandomPoint(), stopConditionFunc, neighborHoodFunc, evaluateFunc)
-diet <- result[[1]]
-observations <- result[[2]]
 
-print(paste("Proteins wanted: ", optimalProteins, ". Got: ", sumDailyProteins(diet), sep = ''))
-print(paste("Carbohydrates wanted: ", optimalCarbohydrates, ". Got: ", sumDailyCarbohydrates(diet), sep = ''))
-print(paste("Fats wanted: ", optimalFats, ". Got: ", sumDailyFats(diet), sep = ''))
-print(paste("Observations: ", observations))
-print(diet)
+loadConfigVariablesAsGlobals <- function(configVariables)
+{
+  foreach(key=names(configVariables), val=configVariables, .combine=rbind, .packages="foreach") %do% assign(key, val, envir = .GlobalEnv)
+}
 
-print(configVariables[['dishesPerMeal']])
+loadDishesAsGlobals <- function()
+{
+  dishes = importDishes(allDishesCount)
+  assign("dishes", dishes, envir = .GlobalEnv)
+}
+
+executeWithConfig <- function(configVariablesName)
+{
+  loadConfigVariablesAsGlobals(configVariablesName)
+  loadDishesAsGlobals()
+  
+  randomPoint <- generateRandomPoint()
+  neighborHood <- neighborHoodFunc(randomPoint)
+  result = tabuSearch(generateRandomPoint(), stopConditionFunc, neighborHoodFunc, evaluateFunc)
+  diet <- result[[1]]
+  observations <- result[[2]]
+  print(paste("Proteins wanted: ", optimalProteins, ". Got: ", sumDailyProteins(diet), sep = ''))
+  print(paste("Carbohydrates wanted: ", optimalCarbohydrates, ". Got: ", sumDailyCarbohydrates(diet), sep = ''))
+  print(paste("Fats wanted: ", optimalFats, ". Got: ", sumDailyFats(diet), sep = ''))
+  print(paste("Observations: ", observations))
+  print(diet)
+  print(configVariables[['dishesPerMeal']])
+}
+
+configVariablesToTest <- getConfigVariablesToTest()
+for(i in 1:length(configVariablesToTest))
+{
+  executeWithConfig(configVariablesToTest[[i]])
+}
