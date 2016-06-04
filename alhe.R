@@ -175,12 +175,13 @@ executeWithConfig <- function(configVariablesName)
   result = tabuSearch(generateRandomPoint(), stopConditionFunc, neighborHoodFunc, evaluateFunc)
   diet <- result[[1]]
   observations <- result[[2]]
-  print(paste("Proteins wanted: ", optimalProteins, ". Got: ", sumDailyProteins(diet), sep = ''))
-  print(paste("Carbohydrates wanted: ", optimalCarbohydrates, ". Got: ", sumDailyCarbohydrates(diet), sep = ''))
-  print(paste("Fats wanted: ", optimalFats, ". Got: ", sumDailyFats(diet), sep = ''))
-  print(paste("Observations: ", observations))
-  print(diet)
-  print(configVariables[['dishesPerMeal']])
+  #print(paste("Proteins wanted: ", optimalProteins, ". Got: ", sumDailyProteins(diet), sep = ''))
+  #print(paste("Carbohydrates wanted: ", optimalCarbohydrates, ". Got: ", sumDailyCarbohydrates(diet), sep = ''))
+  #print(paste("Fats wanted: ", optimalFats, ". Got: ", sumDailyFats(diet), sep = ''))
+  #print(paste("Observations: ", observations))
+  #print(diet)
+  
+  return(list(diet,observations,sumDailyProteins(diet),sumDailyCarbohydrates(diet),sumDailyFats(diet)))
 }
 
 configVariablesToTest <- getConfigVariablesToTest()
