@@ -42,7 +42,7 @@ showPlots <- function(diet, plotTitleSuffix)
   showPlot(diet, 3, paste("Proteins", plotTitleSuffix))
   showPlot(diet, 4, paste("Carbohydrates", plotTitleSuffix))
   showPlot(diet, 5, paste("Fats", plotTitleSuffix))
-  showPlot(diet, 6, paste("Duplicate", plotTitleSuffix))
+  showPlot(diet, 6, paste("Duplicate dishes", plotTitleSuffix))
 }
 
 diet1 <- generateData(10, 1)
