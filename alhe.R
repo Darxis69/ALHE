@@ -183,9 +183,3 @@ executeWithConfig <- function(configVariablesName)
   
   return(list(diet,observations,sumDailyProteins(diet),sumDailyCarbohydrates(diet),sumDailyFats(diet), monotonyRatio(diet)))
 }
-
-configVariablesToTest <- getConfigVariablesToTest()
-for(i in 1:length(configVariablesToTest))
-{
-  executeWithConfig(configVariablesToTest[[i]])
-}
