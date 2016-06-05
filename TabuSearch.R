@@ -1,7 +1,7 @@
 library(hash)
 library(digest)
 
-#TODO WRite in documentation that tabuSize is unlimited
+#tabu size is unlimited
 tabuSearch <- function(startingPoint, stopConditionFunc, neighborHoodFunc, evaluateFunc)
 {
   tabu <- hash()
@@ -18,7 +18,6 @@ tabuSearch <- function(startingPoint, stopConditionFunc, neighborHoodFunc, evalu
     bestCandidateChecksum <- NULL
     for (candidate in neighborHood)
     {
-      #TODO Profile this find waskie gardlo
       candidateChecksum = digest(candidate)
       if (!has.key(candidateChecksum, tabu))
       {
@@ -46,13 +45,6 @@ tabuSearch <- function(startingPoint, stopConditionFunc, neighborHoodFunc, evalu
       break
     }
     
-    #TODO Is the following 'if' required?
-    #'Różnica między metodą tabu a zwykłym algorytmem wspinaczki
-    # polega na tym, że zezwalamy na odwiedzanie sąsiadów o jakości
-    # gorszej od aktualnie rozpatrywanej'
-    
-    #Retest
-    #if (bestCandidateEvaluate > bestPointEvaluate)
     bestPoint <- bestCandidate
     bestPointEvaluate <- bestCandidateEvaluate
     
