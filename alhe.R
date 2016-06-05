@@ -181,7 +181,7 @@ executeWithConfig <- function(configVariablesName)
   #print(paste("Observations: ", observations))
   #print(diet)
   
-  return(list(diet,observations,sumDailyProteins(diet),sumDailyCarbohydrates(diet),sumDailyFats(diet)))
+  return(list(diet,observations,sumDailyProteins(diet),sumDailyCarbohydrates(diet),sumDailyFats(diet), monotonyRatio(diet)))
 }
 
 configVariablesToTest <- getConfigVariablesToTest()

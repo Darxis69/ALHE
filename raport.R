@@ -11,10 +11,6 @@ generateData <-function(n, mode)
   return(result)
 }
 
-# generates n results from configVariablesToTest[[mode]]
-diet50 <- generateData(10, 2)
-diet198 <- generateData(10, 2)
-
 showPlot <- function(input, selector, plotTitle)
 {
   output <- list()
@@ -41,18 +37,39 @@ showPlot <- function(input, selector, plotTitle)
   title(paste(plotTitle))
 }
 
-# TODO ??? displaying whole diet, is it needed?
-# showPlot(diet, 1, "Observations (198 dishes)")
+showPlots <- function(diet, plotTitleSuffix)
+{
+  showPlot(diet, 3, paste("Proteins", plotTitleSuffix))
+  showPlot(diet, 4, paste("Carbohydrates", plotTitleSuffix))
+  showPlot(diet, 5, paste("Fats", plotTitleSuffix))
+  showPlot(diet, 6, paste("Duplicate", plotTitleSuffix))
+}
 
-# shows plot based on 1st argument (result), uses selector and title
-showPlot(diet50, 2, "Observations (50 dishes)")
-showPlot(diet50, 3, "Proteins (50 dishes)")
-showPlot(diet50, 4, "Carbohydrates (50 dishes)")
-showPlot(diet50, 5, "Fats (50 dishes)")
-
-showPlot(diet198, 2, "Observations (198 dishes)")
-showPlot(diet198, 3, "Proteins (198 dishes)")
-showPlot(diet198, 4, "Carbohydrates (198 dishes)")
-showPlot(diet198, 5, "Fats (198 dishes)")
-
-
+diet1 <- generateData(1, 1)
+showPlots(diet1, "(standard)")
+diet2 <- generateData(10, 2)
+showPlots(diet2, "(carbohydrates priority = 3)")
+diet3 <- generateData(10, 3)
+showPlots(diet3, "(proteins priority = 3)")
+diet4 <- generateData(10, 4)
+showPlots(diet4, "(fats priority = 3)")
+diet5 <- generateData(10, 5)
+showPlots(diet5, "(monotony ratio = 2)")
+diet6 <- generateData(10, 6)
+showPlots(diet6, "(monotony ratio = 0.5)")
+diet7 <- generateData(10, 7)
+showPlots(diet7, "(3 meals, 3 dishes)")
+diet8 <- generateData(10, 8)
+showPlots(diet8, "(5 meals, 3 dishes)")
+diet9 <- generateData(10, 9)
+showPlots(diet9, "(4 meals, 2 dishes)")
+diet10 <- generateData(10, 10)
+showPlots(diet10, "(4 meals, 4 dishes)")
+diet11 <- generateData(10, 11)
+showPlots(diet11, "(only first 50 dishes from database)")
+diet12 <- generateData(10, 12)
+showPlots(diet12, "(only first 120 dishes from database)")
+diet13 <- generateData(10, 13)
+showPlots(diet13, "(stop condition = 0.5)")
+diet14 <- generateData(10, 14)
+showPlots(diet14, "(stop condition = 0.75)")
