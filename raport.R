@@ -45,7 +45,7 @@ showPlots <- function(diet, plotTitleSuffix)
   showPlot(diet, 6, paste("Duplicate", plotTitleSuffix))
 }
 
-diet1 <- generateData(1, 1)
+diet1 <- generateData(10, 1)
 showPlots(diet1, "(standard)")
 diet2 <- generateData(10, 2)
 showPlots(diet2, "(carbohydrates priority = 3)")
